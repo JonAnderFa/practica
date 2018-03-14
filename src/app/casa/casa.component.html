@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div><h1>Filtro casas</h1>
+          <label for="busqueda">Filtro:</label> <input [(ngModel)]="searchText" placeholder="Direccion o Nombre" id="busqueda"> <i class="fa fa-search" aria-hidden="true"></i><br>
+          <label for="alquiler">Alquiler:</label> <input [(ngModel)]="alquiler"  type="checkbox" name="alquiler" id="alquiler" value="true"><br>
+          <label for="venta">Venta:</label> <input [(ngModel)]="venta"  type="checkbox" name="venta" id="venta" value="false"><br>
+          <span>Precio: </span>
+          <hr>
+           min <input type="number" [(ngModel)]="min" placeholder="Precio Minimo" id="min"> max <input type="number" [(ngModel)]="max" placeholder="Precio Maximo" id="max"> <br>
+           <hr>
+      </div>
+      <div>
+          <section>
+              <h2>Lista de Casas</h2>
+              <hr>
+              <div class="row">
+                  <div class="col-sm-6" *ngFor="let casa of casas| filterCasa :searchText :alquiler:venta:min:max" (click)="cambiarCasa(casa)">
+                      <div class="jumbotron">
+                            <div><img src="{{casa.foto}}" alt="Foto casa"></div>
+                            <p>{{casa.nombre}} {{casa.precio}}€</p>
+                            <p></p>
+                          </div>                        
+                  </div>   
+                </div> 
+            </section>
+      </div>
+    </div>
+    <div class="col-sm-6">
+       <!-- llamda componente Hijo   -->
+       <app-detalle-casa [c1]="casa1"></app-detalle-casa>
+               
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<p>
+  componente UNO
+</p>
+<input type="text" placeholder="Buscar por id" [(ngModel)]="id">
+<button type="button" class="btn btn-lg" (click)="buscarTarea()"data-toggle="modal" data-target="#modalCoche">
+    Buscar
+</button>
+<p *ngIf="(id==0)">Inserte un ID a buscar</p>
+<div id="todos">
+
+  <section *ngIf="(status==200)">
+    <h2>Lista de Tarea</h2>
+    <hr>
+    <ul>
+      <li *ngFor="let todo of todos">
+          <input type="checkbox" [checked]="todo.completed">
+              <span  [class]="(todo.completed)?'terminada':''" >{{todo.id}} {{todo.title}}</span>
+                                   
+      </li>      
+    </ul>
+  </section>  
+  <section *ngIf="(status!=0)">
+    <h2 *ngIf="(status!=200)" style="color:red">{{status}} {{texto}}</h2>
+
+  </section> 
+
+</div>
+

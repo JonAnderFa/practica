@@ -1,0 +1,15 @@
+<div class="container" *ngIf="(c1!=undefined)">
+    <div class="jumbotron">
+      <h1>Detalle Casa</h1>
+        <div><img src="{{c1.foto}}" alt="Foto casa"></div>
+        <p>{{c1.nombre}} {{c1.precio}}€</p>
+        <p><i class="fa fa-map-marker" aria-hidden="true"></i>{{c1.direccion}}</p>
+        <p><i class="fa fa-home" aria-hidden="true"></i> Habitaciones: {{c1.habitaciones}}</p>
+        <h2>Servicios</h2>
+        <ul>
+          <li *ngFor="let servicio of c1.servicio">
+            {{servicio.nombre}} {{servicio.disponible}}
+          </li>
+      </ul>
+      </div>  
+</div>
